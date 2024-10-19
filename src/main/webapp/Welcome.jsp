@@ -10,9 +10,9 @@
 </head>
 <body>
 	<%@ include file = " menu.jsp" %>
-<%
-String greeting ="도서 쇼핑몰에 오신것을 환영합니다!";
-String tagline =">welcome to Wep Market!"; 
+<%!
+	String greeting ="도서 쇼핑몰에 오신것을 환영합니다!";
+	String tagline ="welcome to Wep Market!"; 
 %>
 
 <div class= "p-5 md-4 bg-body-rertiay rounded-3">
@@ -27,28 +27,32 @@ String tagline =">welcome to Wep Market!";
 	<div class="h-100 p-5">
 		<h3><%=tagline %></h3>
 		<%
+			response.setIntHeader("Refresh", 5);
 			Date day = new java.util.Date();
 			String am_pm;
 			int hour = day.getHours();
-			int minute = day.Minutes();
+			int minute = day.getMinutes();
 			int second= day.getSeconds();
 			
 			if(hour / 12 == 0){
 				am_pm = "AM";
 			} else{
 				am_pm = "PM";
-				hour -= 12; 
+				hour = hour - 12; 
 			}
-			String CT = hour + ":" + minute + ":" + sec + " " + am_pm;
+			String CT = hour + ":" + minute + ":" + second + " " + am_pm;
 			out.println("현재 접속 시각: " + CT + "\n");
-					
 		%>
 	 </div>
 	</div>
 </div>
 
+<footer class= "pt-3 mt-4 text-body-secondary border-top">
+	&copy; BookMarket
+	</footer>
+
 <%@ include file =  "footer.jsp" %>
 	<h1><%= greeting%></h1>
-	<h2><%= tagline %></h2>
+	<h3><%= tagline %></h3>
 </body>
 </html>
