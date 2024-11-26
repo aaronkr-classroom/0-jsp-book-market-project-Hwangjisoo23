@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "dto.Book" %>
 <%@ page import = "dao.BookRepository" %>
+<%@ page errorPage = "exceptionNoBookId.jsp" %>
 <jsp:useBean id = "bookDAO" class= "dao.BookRepository" scope = " session" />
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,15 @@
 <link rel= "stylesheet" href = "./resoures/css/bootstrap.min.css" />
 <meta charset="UTF-8">
 <title>도서정보</title>
+<script type = "text/javascript">
+	funtion addToCart(){
+		if (confirm("도서를 장바구니에 추가하시겠습니까?")){
+			document.addForm.reset();
+		}else{
+			document.addForm.reset();
+		}
+	}
+</script>
 </head>
 <body>
 <div class = "container py-4">
@@ -41,7 +51,12 @@
 					<p> <b>분류</b> : <%=book.getCategory()%>
 					<p> <b>재고수</b> : <%=book.setUnitsInStock()%>
 					<h4><%=book.getUniPrice()%>원</h4>
-					<p> <a hraf = "./book.jap" class="btn btn=secondary">도서 목록 &raquo;</a>
+					<p> <form name = "addForm" action = "./addCart.jsp?id=<%=book.getBookId() %>" method = "post">
+						<a href = "#" class = "btn btn-info" onclink = "addToCart()">도서주문 &requo;</a>
+						<a href = "./cart.jsp" class = "btn btn-warning">장바구니 &requo;</a>
+						<a hraf = "./book.jap" class="btn btn-secondary">도서 목록 &raquo;</a>
+					</form>
+						
 				</div>
 				
 	</div>
