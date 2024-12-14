@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel = " stylesheet" hret = " ./resources/css/bootstrap.main.css" />
+<link rel = " stylesheet" hret = " ./resources/css/bootstrap.min.css" />
 <meta charset="EUC-KR">
 <title>페이지 오류</title>
 </head>
